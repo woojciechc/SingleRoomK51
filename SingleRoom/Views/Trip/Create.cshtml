@@ -1,0 +1,82 @@
+﻿@model SingleRoom.Models.Trip
+
+@{
+    ViewData["Title"] = "Stwórz wycieczkę";
+}
+
+<h1>Stwórz wycieczkę</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TripName" class="control-label"></label>
+                <input asp-for="TripName" class="form-control" />
+                <span asp-validation-for="TripName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TravelAgencyName" class="control-label"></label>
+                <select asp-for="TravelAgencyName" class="form-control">
+                    <option>
+                        Itaka
+                    </option>
+                    <option>
+                        Rainbow
+                    </option>
+                    <option>
+                        Tui
+                    </option>
+                </select>
+                <span asp-validation-for="TravelAgencyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartingAirport" class="control-label"></label>
+                <input asp-for="StartingAirport" class="form-control" />
+                <span asp-validation-for="StartingAirport" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Destination" class="control-label"></label>
+                <input asp-for="Destination" class="form-control" />
+                <span asp-validation-for="Destination" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input id="startDate" asp-for="StartDate" class="form-control" min=@DateTime.Now.AddDays(1).ToString("yyyy-MM-ddThh:mm") onchange="setMinEndDate()" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input id="endDate" asp-for="EndDate" class="form-control"/>
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailAddress" class="control-label"></label>
+                <input asp-for="EmailAddress" class="form-control" value="@User.Identity.Name" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Stwórz nową wycieczkę" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    function setMinEndDate(){
+        var startDate = document.getElementById("startDate");
+        var startDateValue = startDate.value;
+
+
+
+        var endDate = document.getElementById("endDate");
+        endDate.value = null;
+        endDate.setAttribute('min', startDateValue);
+    }
+</script>

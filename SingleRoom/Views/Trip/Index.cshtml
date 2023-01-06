@@ -1,0 +1,75 @@
+﻿@model IEnumerable<SingleRoom.Models.Trip>
+
+@{
+    ViewData["Title"] = "Dostępne wycieczki";
+}
+
+<h1>Dostępne wycieczki</h1>
+
+<p>
+    <a asp-action="Create">Stwórz podróż</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TripName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TravelAgencyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartingAirport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Destination)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailAddress)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TripName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TravelAgencyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartingAirport)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destination)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailAddress)
+                </td>
+                <td>
+                    <a asp-action="EnrollToTrip" asp-route-id="@item.TripId">Dopisz się</a> |
+                    <a asp-action="Details" asp-route-id="@item.TripId">Szczegóły</a> 
+                    @if (@User.IsInRole("Admin"))
+                    {
+                       <a asp-action="Delete" asp-route-id="@item.TripId">| Usuń</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

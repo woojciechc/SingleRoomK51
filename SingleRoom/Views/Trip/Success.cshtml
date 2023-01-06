@@ -1,0 +1,64 @@
+﻿@model SingleRoom.Models.Trip
+
+@{
+    ViewData["Title"] = "Sukces";
+}
+
+<h2>
+    Udało się dopisać do wycieczki.
+</h2>
+
+
+
+
+<div>
+    <h4>
+        Poniżej znajdują się najważniejsze informacje odnośnie Twojej wycieczki. Skontaktuj się z poniższym użytkownikiem w celu ustalenia szczegółów.
+    </h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TripName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TripName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TravelAgencyName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TravelAgencyName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StartingAirport)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StartingAirport)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Destination)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Destination)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+    </dl>
+</div>
+<div>
